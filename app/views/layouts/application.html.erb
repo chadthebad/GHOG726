@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ghog726</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href='/'>Groundhog 7-26</a>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span9">
+        <div class="hero-unit">
+          <%= yield %>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="well">
+          <h3>About Groundhog</h3>
+          <p>This is a simple photo uploading site, that will have various features added to create future versions. The purpose of this is to familiarize myself with rails, and all that you can do with the framework. For more information on the project see: <a href="https://github.com/chadthebad/meta-album">github.com/chadthebad/meta-album</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>  
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<h2>Albums</h2>
+
+<table class='table table-condensed table-striped'>
+  <tr>
+    <th>Title</th>
+    <th>User</th>
+    <th># of Photos</th>
+    <th>Actions</th>
+    <th></th>
+  </tr>
+
+<% @albums.each do |album| %>
+  <tr>
+    <td><%= link_to album.title, album %></td>
+    <td><%= link_to album.user.name, album.user %></td>
+    <td><%= album.photos.count %></td>
+    <td><%= link_to 'Edit', edit_album_path(album) %></td>
+    <td><%= link_to 'Delete', album, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Album', new_album_path %> | 
+<%= link_to 'Users', users_path %> | 
+<%= link_to 'Photos', photos_path %>
