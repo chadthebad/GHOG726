@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   
-  attr_accessible :album_id, :title
-  
   belongs_to :album
+
+  attr_accessible :album_id, :title, :file
   
 end

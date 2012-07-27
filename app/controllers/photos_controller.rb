@@ -18,8 +18,11 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(params[:photo])
+    @photo.file = params[:photo][:file].read
 
     if @photo.save
+      path = "#{Rails.root}/public/uploads/#{@photo.id}.jpg"
+      File.open(path, "wb") { |f| f.write @photo.file }
       redirect_to @photo, notice: 'Photo was successfully created.'
     else
       render action: "new"
