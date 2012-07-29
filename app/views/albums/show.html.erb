@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @album.title %>
-</p>
+<h3>
+  <%= @album.title %> by: 
+  <%= link_to @album.user.name, @album.user %>
+</h3>
 
-<p>
-  <b>User:</b>
-  <%= @album.user_id %>
-</p>
 
+<% @album.photos.each do |photo| %>
+  </br>
+    <img src="/uploads/<%= photo.id %>.jpg" width=50>
+    <%= link_to photo.title, photo %>
+  </br>
+<% end %>
+</br>
 
 <%= link_to 'Add Photo', new_photo_path(@photo), :album_id => @album.id %> |
 <%= link_to 'Edit', edit_album_path(@album) %> |

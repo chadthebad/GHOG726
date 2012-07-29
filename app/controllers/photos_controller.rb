@@ -31,8 +31,12 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
+    @photo.title = params[:photo][:title]
+    @photo.file = params[:photo][:file].read
 
-    if @photo.update_attributes(params[:photo])
+    if @photo.save
+      path = "#{Rails.root}/public/uploads/#{@photo.id}.jpg"
+      File.open(path, "wb") { |f| f.write @photo.file }
       redirect_to @photo, notice: 'Photo was successfully updated.'
     else
       render action: "edit"

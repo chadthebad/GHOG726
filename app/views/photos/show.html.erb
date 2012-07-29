@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @photo.title %>
-</p>
+<h3>
+  <%= @photo.title %> from: 
+  <%= link_to @photo.album.title, @photo.album %>
+</h3>
+
+<img src="/uploads/<%= @photo.id %>.jpg">
 
 <p>
-  <b>Album:</b>
-  <%= @photo.album_id %>
-</p>
-
-<p>
-  <b>Uploaded by:</b>
+  Uploaded by:
   <%= link_to @photo.album.user.name, @photo.album.user %>
 </p>
 
