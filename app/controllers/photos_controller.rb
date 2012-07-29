@@ -18,11 +18,11 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(params[:photo])
-    @photo.file = params[:photo][:file].read
+    @photo.file = nil
 
     if @photo.save
       path = "#{Rails.root}/public/uploads/#{@photo.id}.jpg"
-      File.open(path, "wb") { |f| f.write @photo.file }
+      File.open(path, "wb") { |f| f.write params[:photo][:file].read }
       redirect_to @photo, notice: 'Photo was successfully created.'
     else
       render action: "new"
@@ -32,11 +32,10 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     @photo.title = params[:photo][:title]
-    @photo.file = params[:photo][:file].read
 
     if @photo.save
       path = "#{Rails.root}/public/uploads/#{@photo.id}.jpg"
-      File.open(path, "wb") { |f| f.write @photo.file }
+      File.open(path, "wb") { |f| f.write params[:photo][:file].read }
       redirect_to @photo, notice: 'Photo was successfully updated.'
     else
       render action: "edit"
