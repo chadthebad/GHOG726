@@ -3,3 +3,5 @@
 
 
 2. make db based uploads work.
+
+3. fix: edit assumes changes for all fields.
